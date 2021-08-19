@@ -1,0 +1,44 @@
+NAME
+unix_assignment3
+
+1.A.
+
+#below, in front of $, commands executed for the numbered task associated with a blank grey box in teh markdown version of the assignment. e.g, 
+
+$ split -l 10000 sample_passerina.fastq 
+
+# notes for yourself below if that is useful.
+
+1.B
+
+$ 
+
+2.A.
+
+$ 
+
+
+2.B.
+
+
+$ 
+
+2.C.
+
+
+$ 
+
+2.D.
+
+
+$ 
+
+3.C.
+
+$ 
+
+3.D. 
+
+
+$ 
+
