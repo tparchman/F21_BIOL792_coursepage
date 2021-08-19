@@ -134,19 +134,19 @@ For students who are required to quarantine or self-isolate due to 1) COVID 19 i
 
 | Week    |  Date          |  Class                         |  Due          |
 | ------- | ---------------| ------------------------------ | ------------- |
-| Week 1  | Aug. 25, 27    | Course introduction, Unix I    | 
-| Week 2  |	Sep. 1, 3      | Unix II                        |               |
-| Week 3  |	Sep. 8, 10	   | Unix III                       | Homework 1   |
-| Week 4  |	Sep. 15, 17	   | Unix IV                        | Homework 2   |
-| Week 5  |	Sep. 22, 24	   | Python I                       | Homework 3;  *1-2 page project description | 
-| Week 6  |	Sep. 29, Oct. 1| Python II	                    | Homework 4     
-| Week 7  |	Oct. 6, 8	   | Python III                     | Homework 5
-| Week 8  |	Oct. 13, 15	   | Python IV                      | Homework 6 |
-| Week 9  |	Oct. 20,22	   | Python V	                    | Homework 7 |  
-| Week 10 |	Oct. 27, 29	   | Python VI                      | Homework 8 |
-| Week 11 | Nov. 3, 5      | Python VII                     | Homework 9 |
-| Week 12 | Nov. 10, 12    | Population genetics workflow   | nothing |
-| Week 13 | Nov. 17, 19	   | Population genetics cont.  | nothing
-| Week 14 | Nov. 24	       | HPC/Pronghorn/Project prep | 
-| Week 15 | Dec. 1, 3	   | Project prep/presentation  | Homework 10, projects due
+| Week 1  | Aug. 24, 26    | Course introduction, Unix I    | 
+| Week 2  |	Aug. 31, Sep. 2      | Unix II                        |               |
+| Week 3  |	Sep. 7, 9	   | Unix III                       | Homework 1   |
+| Week 4  |	Sep. 14, 16	   | Unix IV                        | Homework 2   |
+| Week 5  |	Sep. 21, 23	   | Python I                       | Homework 3;  *1-2 page project description | 
+| Week 6  |	Sep. 28, 30| Python II	                    | Homework 4     
+| Week 7  |	Oct. 5, 7	   | Python III                     | Homework 5
+| Week 8  |	Oct. 12, 14	   | Python IV                      | Homework 6 |
+| Week 9  |	Oct. 19,21	   | Python V	                    | Homework 7 |  
+| Week 10 |	Oct. 26, 28	   | Python VI                      | Homework 8 |
+| Week 11 | Nov. 2, 4      | Python VII                     | Homework 9 |
+| Week 12 | Nov. 9, 11    | Population genetics workflow   | nothing |
+| Week 13 | Nov. 16, 18	   | Population genetics cont.  | nothing
+| Week 14 | Nov. 23	       | HPC/Pronghorn/Project prep | 
+| Week 15 | Nov. 30, Dec. 2	   | Project prep/presentation  | Homework 10, projects due
 | Week 16 | Dec. 8	       | Present Projects		          |   *projects due
