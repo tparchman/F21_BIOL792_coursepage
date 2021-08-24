@@ -164,6 +164,23 @@ You can not use your mouse to move the terminal cursor.
 
 - “control l” will clear one line at a time
 
+## 10. Cloning github repository for this course
+
+### Downloading material from github using `git`
+
+While you can download indidvidual files from github using your preferred web browser, you can also use the below UNIX command to access github as well. Using git commands can get complicated quickly, but it is a very useful skill to have for reproducibility, tracking changes, and collaboration. We do not go over git in this course but there are excellent tutorials online (http://swcarpentry.github.io/git-novice/). 
+
+For this course, downloading individual files might suffice. But if you would like to download the entire repo, you can do so through the command line using the below command:
+
+**hint:** make a directory somewhere on your computer for this workshop. Run below command in that directory.
+
+```
+git clone https://github.com/tparchman/F21_BIOL792_coursepage
+```
+
+**note:** I will be updating the course on a near weekly basis. Thus, you will likely want to update this directory using additional `git` commands
+
+
 
 ## Additional useful Unix resources, materials to keep close
 

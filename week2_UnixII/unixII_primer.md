@@ -9,6 +9,7 @@
 - more Unix commands, redirection
 - process monitoring
 - introduction to `grep`
+
 - **In book, last 5 pages of chapter 4; chapter 5.**
 - **U10 through U27 in Bradnam and Korf primer (http://korflab.ucdavis.edu/Unix_and_Perl/current.html)**
 <p>&nbsp;</p>
@@ -108,7 +109,13 @@ Use `less` to have a look at the top of sample_passerina.fastq files I have unde
 
 To access and edit text *within* the terminal, there are many editors (`vim`, `emacs`, etc.) you can use. For this course, I suggest `nano`, which will be avaialable on your system. Why would you want to use a keyboard controlled only in-terminal text editor instead of something like TextWrangler? Once we start working on remote servers, the time and place for such usage will become more clear. For now, just know it exists as an option, but do not make your life harder by trying to write your first bash or python programs in `nano`.
 
-## 4. Compression and decompression using gzip and gunzip
+To open a file for editing within the terminal with `nano`:
+
+```
+$ nano myfile.txt
+```
+
+## 4. Compression and decompression using `gzip` and `gunzip`
 
 Compression and de-compression are regular activities associated with large text data files, so get comfortable with it. `gzip` is a command for compressing and decompressing files. 
 

@@ -149,30 +149,32 @@ You'll see that instead of specifying a specific file for the first command in e
 <p>&nbsp;</p>
 
 ### **A. Mac Unix: Homebrew (`brew`)** 
-If you have already installed Homebrew - you dont need to do this. Check if you have it:
 
-    $ which brew
-  
-If you dont have it, then:
+`homebrew` manages and installs packages on Mac OS Unix. 
+To install brew (homebrew):
 
     $ /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 
-  OR if you are running OS catalina:
+`brew` is pretty easy to use. To look at a list of commands and their uses:
 
-    $ /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
+    $ brew help
 
+To search for an installable program:
 
-Note, that you can use brew to install all kinds of useful packages. We have used `top` to monitor processes running on Unix or Linux systems. `htop` is a more detailed version of `top` which many find easier and more useful to use and interpret. `htop` isnt installed in base unix, but you can quickly use `brew` to grab and install it:
+    $ brew search
+
+To install a package:
+
+    $ brew install packagename
+
+As a simple example, lets install a more useful version of `top`, `htop`, that has some expanded information and visuals. Using brew is quite easy, as you can see.
 
     $ brew install htop
 
-`wget` is another package not installed in base Mac Unix. It allows easy retrieval of files from remote locations, and works better than `curl` in many cases.
+A more detailed, yet basic, tutorial can be found below. As with the above, carefully review before using.
 
-    $ brew install wget
+- https://wpbeaches.com/installing-homebrew-on-macos-big-sur-11-2-package-manager-for-linux-apps/
 
-Useful tutorials can be found at links below:
-- https://www.howtogeek.com/211541/homebrew-for-os-x-easily-installs-desktop-apps-and-terminal-utilities/
-- https://www.infoworld.com/article/3328824/homebrew-tutorial-how-to-use-homebrew-for-macos.html
 
 <p>&nbsp;</p>
 
