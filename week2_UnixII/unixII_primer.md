@@ -47,7 +47,18 @@ You can can customize the way a command works from shell by creating an **alias*
 
     $ alias ls = 'ls -lh'
 
-When you do this, it will only work from within a single terminal session. Once you get more comfortable in Unix, you will likely want to customize the behavior of your shell uniformly. This can easily be done by modifying a file, .profile or .bash_profile, that resides in your home directory. Id suggest the following alias's, or atleast this is what I use.
+When you do this, it will only work from within a single terminal session. Once you get more comfortable in Unix, you will likely want to customize the behavior of your shell uniformly. This can easily be done by modifying a file, `.zshrc`, `.bashrc`, `.profile` or `.bash_profile`, that resides in your home directory. The `.` before the file names here renders them 'hidden'. Thus, to move to your home directory and look for these types of files use:
+
+    $ cd ~
+    $ ls -a
+
+- If you are running a newer Mac OS, you are probably running the zsh terminal application. If so, `.zshrc` is the name of the profile file. If you have one, consider adding alias's such as below. If you dont have one, use `touch` to make one, or better yet, just download the example `.zshrc` on the course github page under `unix_resources` and move to your home directory.
+
+- If you are running an older Mac OS, or just prefer bash as a terminal application, the profile information is stored in `.bash_profile` or `.bashrc`. You can create such a file and insert alias commands as below or merely change the name of the `.zshrc` file above.
+
+- If you are running Ubuntu Linux, check which terminal application you are using and consult google.
+
+Id suggest the following alias's, or atleast this is what I use.
 
     # helpful alias collection
     alias python='python3'
@@ -58,7 +69,7 @@ When you do this, it will only work from within a single terminal session. Once 
     alias cp="cp -i"
     alias tw='/Applications/TextWrangler.app/Contents/MacOS/TextWrangler'
 
-The alias collection above has some useful features. `ll` and `ls`, when typed, will give you more complete, and/or more readable information. `rm`, `mv`, and `cp` have the `-i` option added, which is HIGHLY HIGHLY recommended. This will change the behavior of `rm`, `mv`, or `cp` to always ask if you are sure you want to remove a file, or overwrite a file with the same name in terms of `cp` and `mv`.
+The alias collection above has some useful features. `ll` and `ls`, when typed, will give you more complete, and/or more readable information. `rm`, `mv`, and `cp` have the `-i` option added, which is  HIGHLY recommended. This will change the behavior of `rm`, `mv`, or `cp` to always ask if you are sure you want to remove a file, or overwrite a file with the same name in terms of `cp` and `mv`.
 
 IF you like this alias collection or want something similar, you can set in your bash_profile as follows. These live in a hidden file in your home directory (.bash_profile, the "." in front of a file hides the file from showing up with normal use of `ls`). If you have such a profile file, set alias as above within that file. 
 
