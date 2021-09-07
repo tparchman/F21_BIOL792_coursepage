@@ -100,7 +100,7 @@ The dirsource directory will be made in the Deskop directory.
 	
     $
 
-## 4. Writing a useful shell scripts. OPTIONAL?
+## 4. Writing a useful shell scripts.
 
 **4.** Here you will write a simple bash script for rapidly syncing your working files from a certain directory (or perhaps your entire home directory) to a flash or backup drive. This will require you to understand how to write a shell script, and how to use `rsync` (pay special attention to the delete option). The end point of this assignment should be a script that you can run from the terminal that accomplishes this job merely by typing the name of the shell and the program. You will only need two lines within the script. One will be #!/usr/bin and one will be your `rsync` command.
 
