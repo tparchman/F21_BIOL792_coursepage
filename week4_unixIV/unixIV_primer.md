@@ -6,7 +6,6 @@
 - line endings
 - advanced text processing tools (`sed`, `awk`)
 - Shell scripts: loops
-- Package installers/managers
 - From Haddock and Dunn: Chapters 6 and 16
 - Bradnam and Korf primer through U45
 
@@ -24,9 +23,9 @@ In this class, you can store your scripts however you want. You can put them in 
 
     $ chmod u+x mac2unix.sh
 
-Second, you need to add the directory you store such scripts in to `$PATH`. If you follow the suggestion of Haddock and Dunn (pg. 87), create a scripts directory (scripts/ for e.g.) within your home directory and add that to `$PATH` by adding the below line to `.bash_profile`, `.profile`, or `.zprofile`:
+Second, you need to add the directory you store such scripts in to `$PATH`. If you follow the suggestion of Haddock and Dunn (pg. 87), create a scripts directory (~/scripts/ for e.g.) within your home directory and add that to `$PATH` by adding the below line to `.bash_profile`, `.profile`, or `.zhsrc`:
 
-    export PATH="$PATH:$HOME/scripts
+    export PATH="$PATH:$HOME/scripts"
 
 Once you have done the above, you can call such scripts from the command line simply by typing them from the prompt:
 
@@ -106,6 +105,10 @@ There are a ton of additional tasks that you can accomplish with `awk`, and we e
 
     $ chmod u+x mac2unix.sh
     $ ./mac2unix.sh grouse_barcodes.csv
+
+Or, this could be executed more simpley with:
+
+    $ bash mac2unix.sh grouse_barcodes.csv
 
 This will produce a file "u_grouse_barcodes.csv", which should have unix line endings.
 
