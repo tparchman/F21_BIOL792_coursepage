@@ -47,13 +47,15 @@ As Unix commands, and many scripting languages, often entail processing one line
 
 Take a look at `grouse_barcodes.csv` in the github repository for this week . This file should contain three columns of information seperated by commas, but you'll notice that all of the information appears on a single line, and the highlighted symbol `^M` exists where line endings should. Here, the `^M` is showing you every place where a Mac line ending (`\r`) exists in the file. There are multiple ways that you could easily change the line endings.
 
-You could open the file in `Text Wrangler` or a similar editor. At the bottom of the window, you will see the words `Legacy Mac OS (CR)`, which tells you that this file is using Mac line endings. If you click that drop down menu, change the line endings to `Unix (LF)`, and save the file. `NOTE`: the `\r` line ending is called a carriage return (CR), whereas the `\n` line ending is called a line feed (LF). 
-
-Alternatively, we can use text processing commands such as `tr`, a transliterator function. You can think of `tr` as a find and replace command, where you specify a match to find (which can be specific, or a flexible regular expression) and 2) some replacement text. Check out the `man` page for `tr` before moving forward. 
+You could open the file in `bbEdit`, `VScode` or a similar editor to manually change line endings. Alternatively, and more efficiently, we can use `tr`, a transliterator function. You can think of `tr` as a find and replace command, where you specify a match to find (which can be specific, or a flexible regular expression) and 2) some replacement text. Check out the `man` page for `tr` before moving forward. 
 
 Try changing the line endings of `grouse_barcodes.csv` using `tr`, and use `less` to confirm that it worked. In the command below, the first text in quotes designates the match to find, and the second represents the replacement text. In this case, we are finding Mac line endings (`\r`) and replacing them with Unix line endings (`\n`). We use `cat` to send the file contents to stdout, and then pipe that into the `tr` command.
 
     $ cat grouse_barcodes.csv | tr '\r' '\n' > grouse_barcodes_unix.csv
+
+Equivalently (using `>` instead of `cat` and `|`):
+
+    $ tr '\r' '\n' < grouse_barcodes.csv > grouse_barcodes_unix.csv
    
 ## 3. substituting matches with `sed`
 
@@ -106,7 +108,7 @@ There are a ton of additional tasks that you can accomplish with `awk`, and we e
     $ chmod u+x mac2unix.sh
     $ ./mac2unix.sh grouse_barcodes.csv
 
-Or, this could be executed more simpley with:
+Or, this could be executed more simply with:
 
     $ bash mac2unix.sh grouse_barcodes.csv
 
