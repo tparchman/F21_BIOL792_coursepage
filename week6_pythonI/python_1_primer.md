@@ -153,8 +153,12 @@ Strings can be repeated with `*`:
 
 
 
-### Python has a diverse array of string methods, or functions, that allow efficient work with strings. A few examples below will illustrate the syntax for using these methods.
-<p>&nbsp;</p>
+### Python has a diverse array of string methods, or functions, that allow efficient work with strings. A few examples below will illustrate the syntax for using these methods. 
+
+
+### For the example syntax below, `str` represents a generic string variable name, the function name occurs after the `.`, and `()` are either left empty or are used to pass additional arguments to the function. 
+
+<p>&nbsp;</p
 
 `str.upper()` will convert string to uppercase:
 
@@ -178,6 +182,12 @@ Strings can be repeated with `*`:
 
     Seq_one_alphanum_test = Seq_one.isalnum()
     print ("Use of str.alnum: ", Seq_one_alphanum_test)
+
+
+`str.count()` will count the number of occurences of a specific character. The character is passed in quotes within `()` as an argument.
+
+    Seq_one_ct_a = Seq_one.count('a')
+    print ("Use of str.count: ", Seq_one_ct_a)
 
 <p>&nbsp;</p>
 
@@ -312,6 +322,8 @@ In another example, I forgot to place parentheses around the variable which I am
     SyntaxError: Missing parentheses in call to 'print'. Did you mean print(Rep_Seq)?
 
 Note, for the examples shown above in sections 3A and 3B could be tested using the interactive prompt.
+
+### **Better than the normal in terminal interactive prompt, is using the Ipy interactive console (Jupyter Qty console)!**
 <p>&nbsp;</p>
 
 ### 5B. The interactive prompt is also useful for using `help()` and `dir()`. Try these with a few functions, you will quickly see the usefulness.
@@ -342,7 +354,7 @@ Note, for the examples shown above in sections 3A and 3B could be tested using t
 
 <p>&nbsp;</p>
 
-# 6. Pulling raw input from the command line (`raw_input()`)
+# 6. Pulling raw input from the command line (`input()`)
 We will learn more about getting input of all sorts into our python programs in the coming weeks. During the early weeks, we will most often work with variables we build within scripts. Haddock and Dunn cover the `input()` function in chapter 8, which we will reiterate here, and which you will use for the python assignment exercises this week. **Note: this function was named `raw_input` in python2, and is covered as such in Haddock and Dunn. The updated document available under week6 ("PythonLesson1_Chapter8.docx") reflects this and other modifications to python3.**
 
     name3 = input("Enter a string: ")
