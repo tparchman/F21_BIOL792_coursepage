@@ -1,0 +1,20 @@
+fly1	D	180	1
+fly1	N	202	2
+fly2	D	177	3
+fly2	N	300
+fly3	D	80
+fly3	N	167
+fly4	D	300
+fly4	N	301
+fly5	D	150
+fly5	N	180
+fly11	D	180
+fly11	N	202
+fly12	D	177
+fly12	N	300
+fly13	D	80
+fly13	N	167
+fly14	D	300
+fly14	N	301
+fly15	D	150
+fly15	N	180

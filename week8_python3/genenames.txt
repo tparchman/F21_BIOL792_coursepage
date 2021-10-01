@@ -1,0 +1,7 @@
+WD1295	carB
+WD1298	rpoD
+WD1303	rpoZ
+WD1306	mutL-1
+WD1309	sucA
+WD1316	ubiA
+WD1318	infB
