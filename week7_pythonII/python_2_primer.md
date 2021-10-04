@@ -1,4 +1,4 @@
-# Python primer II, Data Science I, Fall 2020. 
+# Python primer II, Data Science I, Fall 2021 
 
 ## Topics to cover
 - lists
@@ -34,7 +34,7 @@ Specifying ranges of elements is done using `:`, with indices corresponding to b
     print(List[1:4]) # will print ('b', 'c', 'd')
     print(List[-3:]) # will print ('c', 'd', 'e')
 
-Note, that information from strings can be similarly extracted. One difference is that you can not modify a portion of a string, but you can modify portions of a list.
+Note, that information from strings can be similarly extracted by treating them in list context. One difference is that you can not (as readily) conditionally modify a portion of a string, but you can modify portions of a list.
 
     Names = "TomJoshTrevor"
     print(Names[0:3]) # prints 'Tom'
