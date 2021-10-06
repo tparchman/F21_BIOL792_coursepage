@@ -24,7 +24,15 @@
 
 3.) Some practice working with DNA sequence data. Here we are going to process a fasta file (no60_intron_IME_data.fasta) containing DNA sequence data for 59,260 intron sequences You will need to calculate some summary information for each sequence, and to write that information to a file that you are going to create in your script. 
 
-Instead of hardcoding the file name into your script, use `sys.argv` to open a file object from the command lineWrite to an output file **A. the id lines, B. the length of each sequence, and C. the GC content of each sequence (remember, GC content is simply the proportion of bases in a DNA sequence that are either G or C). Lastly have your program print to screen the number of DNA sequences (use incrementing, e.g., TotalSeq += 1, for each time you process a DNA sequence) in the no60_intron_IME_data.fasta file and the average GC content over all of the sequences.**
+Instead of hardcoding the file name into your script, use `sys.argv` to open a file object from the command lineWrite to an output file:
+
+**A. the id lines**
+
+**B. the length of each sequence**
+
+**C. the GC content of each sequence (remember, GC content is simply the proportion of bases in a DNA sequence that are either G or C).**
+
+**Lastly have your program print to screen the number of DNA sequences (use incrementing, e.g., TotalSeq += 1, for each time you process a DNA sequence) in the no60_intron_IME_data.fasta file and the average GC content over all of the sequences.**
 
 **Hints:**
 

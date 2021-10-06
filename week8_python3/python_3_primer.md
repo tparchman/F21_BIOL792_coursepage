@@ -3,7 +3,7 @@
 ## Topics to cover
 - working with files (input/output)
 - processing command line arguments in your code
-- introduction to libraries (`import`) and regular expressions (`re`)
+- introduction to using libraries (`sys`) and (`re`)
 - Haddock and Dunn chapters 9 and 10, bit of 11 (`sys.argv`)
 - updated document that has corrections for python3 where necessary (PythonLesson2_Chapter9.pdf, PythonLesson3_Chapter10.docx)
 <p>&nbsp;</p>
@@ -11,18 +11,18 @@
 
 # Working with Files
 
-For almost every task you attempt with Python, you will need to 1) open and read data from existing text files; and 2) write the products of your code to new text files. Sometimes you will work with one file at a time, while other tasks will involve reading and writing to very large numbers of files. As hopefully you will see here, Python makes all of the above fairly straightforward. 
+For almost every task you attempt with Python, you will need to 1) open and read data from existing text files; and 2) write the products of your code to new text files. Sometimes you will work with one file at a time, while other tasks will involve reading and writing to multiple files and at some times large numbers of files. As hopefully you will see here, all of the above is fairly straightforward with Python. 
 <p>&nbsp;</p>
 
 ## I. Input
 
 Input involves several steps
 
-- assigning the name of the file to a variable (based on its location), and opening a connection to the file (creating a file object with `open()`)
-- reading the contents of the file (`.read`)
+- **A.** assigning the name of the file to a variable (based on its location), and opening a connection to the file (creating a file object with `open()`)
+- **B.** reading the contents of the file (`.read`)
 <p>&nbsp;</p>
 
-### `open()`, along with the `r` (read) argument, can be used to open a connection (also could be called a file handle) to files stored on your computer. 
+### A. Establishing file handles: `open()`can be used to open a connection (also could be called a file handle) to files stored in directories on your computer. 
 
 <p>&nbsp;</p>
 
@@ -36,22 +36,16 @@ Of course, you can also use an absolute path:
 
     IN_file=open('/working/parchman/data.txt', 'r')
 
-## ** Perhaps more usefully, file names can be processed from command line arguments. This is often advantageous in that the same script can be used to process different files or different sets of files without. Let's walk through how to do this below, while also giving you a preview of using python libraries/modules. 
+
+### Perhaps more usefully, file names can be processed from command line arguments. This is often advantageous in that the same script can be used to process different files or different sets of files without. Let's walk through how to do this below, while also giving you a preview of using python libraries/modules.
+
 <p>&nbsp;</p>
 
-Command line arguments can be accessed from you code using `sys.argv`. Once you have imported the `sys` module, `sys.argv` will essentially be a list of command line arguments. `IMPORTANT NOTE`: the [1:] below skips the first argument, which is the script itself.
+A strength of python is the enormous number of libraries/packages that exist to facilitate specific tasks. We will soon start to learn more about more libraries in Python; here we will introduce a commonly used library and the process of importing libraries.
 
-    import sys
-    for Arg in sys.argv[1:]:       
-        print(Arg)
+Command line arguments can be accessed from you code using `argv` function of the `sys` library. `sys.argv` allows you to directly access a list of command line arguments.  
 
-If you had placed just the above in a script, executed that script as below:
-
-    $ python argtest.py Lebron AD Rondo
-
-You should see Lebron, AD and Rondo printed consecutively to the screen
-
-From here, you can see that using the `open()` function to make file objects from filenames listed in sys.argv is an efficient way to access files in your code. For most cases, this strategy will be more efficient and useful than hardcoding file names into your scripts.
+From here, you can see that using the `open()` function to make file objects from filenames contained in the `sys.argv` list is an efficient way to access files in your code. For most cases, this strategy will be more efficient and useful than hardcoding file names into your scripts.
 
     import sys
     IN = open(sys.argv[1], 'r') 
@@ -63,41 +57,48 @@ If you provide a file name as an argument, `sys.argv[1]`, as above, the second e
 	import sys
 	IN = open(sys.argv[1], 'r')
 
+The [1:] below skips the first argument, which is the script itself, and will access the remaining command line arguments.
+
+    import sys
+    for Arg in sys.argv[1:]:       
+        print(Arg)
+
+If you had placed just the above in a script, and executed that script as below:
+
+    $ python argtest.py Lebron AD Rondo
+
+you should see Lebron, AD and Rondo printed consecutively to the screen
+
 <p>&nbsp;</p>
 
-### There are a number of ways you can read data from a file object.
-<p>&nbsp;</p>
+## B. Reading data from a file.
 
-**To read the *entire* contents of file**
+To read the *entire* contents of file
 
     IN = IN_file.read()
 
-**To read one line at a time (you will often, if not usually, want to do this with big text data)**
+To read one line at a time (you will often, if not usually, want to do this with big text data)
 
     IN = IN_file.readline()
 
+If you wanted to read all of the lines in a file straight into a list (I would note that I do not commonly do this)
 
-**If you wanted to read all of the lines in a file straight into a list (I would note that I do not commonly do this)**
-
-    IN.readlines()
+    File_as_List = IN_file.readlines()
 
 Or:
 
-    list(IN)
+    list(IN_file)
 
-**What you will most often want to do is loop over the file object to read each line one at a time from the file. In other words, we will run all of our commands on the first row of the file, then we will run all of our commands on the second row, and so on. This is memory efficient, fast, and leads to simple code:**
+What you will often (perhaps usually) want to do is loop over a file to read each line one at a time from the file. In other words, we will run this block of code on the first line of the file, then we will run this block of code on the second line, and so on. This is memory efficient, fast, and leads to simple code:
 
     for Line in IN:
         print (Line)
 
-**Once you start processing files one line at a time,  you will realize that line ending characters (`\n`) often get in the way, and can be most effectively dealt with by removing them right off the bat. We can use the `.strip` function to do this as below.**
+Once you start processing files one line at a time,  you will realize that line ending characters (`\n`) often get in the way, and can be most effectively dealt with by removing them right off the bat. We can use the `.strip` function to do this.
 
-    IN_data = IN_data.strip("\n")
+The below code provides a simple example of specifying a file for reading, opening the file, looping through file one line at a time with a `for` loop, and incrementing to keep track of how many lines are being processed.
 
-
-### Another way of doing this, following Haddock and Dunn:
-
-    IN_Name = "data.txt"
+    IN_Name = sys.argv[1]
     IN = open(IN_Name, 'r')
     LineNumber = 0  ## setting to 0 to count lines while looping through the file. 
 
@@ -107,6 +108,7 @@ Or:
 	
 	    LineNumber += 1 ## incrementing LineNumber to count runs through loop
 	
+    print(LineNumber) # this will be the number of lines processed of IN
     IN.close() #closing IN, see below.
 
 ## II. Output
@@ -128,14 +130,20 @@ The `.write` function above works similarly to `print`. Hence, you can write str
 Strings can be written using just a variable name, but Python doesnt like lists
 
     OUT4.write(Name + "\n")
-	
+
+For appending to an already existing file, we use option with the "a"
+
+    OUTa = open("existing_file.txt", "a")
+    OUTa.write("%d\n" % (VarName)) # will write to end of already existing file
+
 Finally, note that you can control output with `print` as well by using unix redirect (`>`), if you only need to send output to one file.
 
     $ python myscript.py > output.txt
 
-## III. Closing file connections 
 
-It may take some experience before you realize that closing file connections when you are done with them is good form. While learning and writing straightforward scripts, you may not encounter problems when you fail to close file handles, but that will change as you ramp up what you are doing. Nonetheless, get in the habit of doing this now, and try not to forget. It is simple using the `.close()` function. While you are learning python, you will commonly want to these commands towards the end of your scripts.
+## III. Closing files 
+
+It may take some experience before you realize that closing files  when you are done with them is good form. While learning and writing straightforward scripts, you may not encounter problems when you fail to close files, but that will change as you ramp up what you are doing. Nonetheless, get in the habit of doing this now, and try not to forget. It is simple using the `.close()` function. While you are learning python, you will commonly want to these commands towards the end of your scripts.
 
     IN.close()
     OUT.close()
@@ -150,12 +158,16 @@ The code below gives an example of looping through every line in a file.
 		
 
 
-### splitting a line into a workable list, extracting a range of values
+### Example code for opening a file, looping through one line at a time, and splitting each line into a workable list, extracting a range of values:
 
 After removing line endings, you will often want to split the line (which is read in as a string) into a list using `.split()`. Once the line is split, you can work on each element separately using list notation or you can loop through the list with another for loop.
 
+    InFile=sys.argv[1]
+    IN=open(InFile, "r")
+    OUT1=open("filetowrite.txt", "w")
+
     LineNumber = 0
-	for Line in InFile:
+	for Line in IN:
 		Line = Line.strip('\n')
 		ElementList = Line.split('\t') #tab delimited text.
         OUT1.write(str(ElementList[1:5]))
@@ -193,4 +205,4 @@ The `^` character can be used to anchor the pattern at the beginning of the stri
     else:
         print("Seq does not end with T.\n")
 
-This is just a taste to get you started. We will cover more depth on working with regular expressions next week.
+This is just a brief introduction to get you started. We will cover more depth on working with regular expressions next week.

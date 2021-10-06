@@ -1,4 +1,4 @@
-# Python primer II, Data Science I, Fall 2021 
+# Python primer II, Data Science I, Fall 2020. 
 
 ## Topics to cover
 - lists
@@ -11,7 +11,7 @@
 # 1. Lists
 Lists store vectors of information, and you will commonly use them. They are convenient because they can be used with loops to execute the same blocks of code on each element.
 
-Hardcoding lists within your scripts is good for learning, although once you start working with real data you will learn to build lists quickly on the fly. To build lists, we enclose the set in brackets. The contents of a list can be a mixture of data types, although you will usually work with lists of only one type (strings, integers, floats)
+Hardcoding lists within your scripts is good for learning, although once you start working with real data you will learn to build lists quickly on the fly. To build lists, we enclose the set in brackets. The contents of a list can be a mixture of data types, although you will usually work with lists of only one type (strings, integers, floats).
 
     NameList = ['Jim', 'Bob', 'Amy', 'Beth']    # list of strings
     NumList = [9, 28, 18, 83, 85]   # list of integers
@@ -19,7 +19,7 @@ Hardcoding lists within your scripts is good for learning, although once you sta
 
 List elements are accessed by their indeces, 0 coming before the first list element. Rather than thinking of each element as matching its index, think of the indeces as representing the boundaries between elements. (see page 159 of Haddock and Dunn for explanation)
 
-    List=('a', 'b', 'c', 'd', 'e')
+    List=['a', 'b', 'c', 'd', 'e']
     print(List[0])  # will print a
     print(List[2])  # will print c
  
@@ -32,10 +32,12 @@ List elements are accessed by their indices, -1 is the last list element.
 Specifying ranges of elements is done using `:`, with indices corresponding to boundaries between elements (see page 159 of Haddock and Dunn for explanation).
 
     print(List[0:3])  # will print ('a', 'b', 'c')
+    print(List[1:])  # will print 1 element through the end ('b', 'c', 'd','e')
+    print(List[:2])  # will print beginning up to the 2 element ('a', 'b')
     print(List[1:4]) # will print ('b', 'c', 'd')
     print(List[-3:]) # will print ('c', 'd', 'e')
 
-Note, that information from strings can be similarly extracted by treating them in list context. One difference is that you can not (as readily) conditionally modify a portion of a string, but you can modify portions of a list.
+Note, that information from strings can be similarly extracted. One difference is that you can not modify a portion of a string, but you can modify portions of a list.
 
     Names = "TomJoshTrevor"
     print(Names[0:3]) # prints 'Tom'
@@ -89,7 +91,12 @@ Joining two lists together is very simple, just use `+`
     
     del(Breeds[:2]) #removes the first two elements
 
-`.reverse()` reverses a list. **Note, this function doesn't return a value, it just reverses the existing array.**
+`.sort()` can be used to sort the elements of a list. Try it with the code below, note that this function doesn't return anything, but changes the order of the list indeces on the fly.
+
+    Breeds.sort()
+    print(Breeds)
+
+`.reverse()` reverses a list. **Note, this function doesn't return a value, it just reverses the existing list.**
  
     Bases=['A', 'G', 'G', 'T', 'T', 'T']
     Bases.reverse()
@@ -169,7 +176,21 @@ Notice above we are doing three things.
 - We then put a conditional statement to print something only if that condition is met.
 - `%` is the modulo operator. It returns the *remainder* of division. So 10%10 = 0, 20%10 = 0, etc., but 5%10=5.
 
-### While looping through data structures, we will often want to use an incrementer or counter, to keep track of how far we have gone, how far we should go, or how many times we have encountered a particular object. The `+=` tool from last week can be very helpful for this.
+# Incrementing with loop iteration (e.g., `ctr += 1`)
+### While looping through data structures, we will often want to use an incrementer or counter, to keep track of how far we have gone, how far we should go, or how many times we have encountered a particular object. The `+=` operator can easily, and often is, used for this.
+
+### Here is an example of how to simply increment a counter to keep track of how far you have gone through a list. If you start with zero, you will essentially be tracking correct list indices (because the first list element is 0)
+
+    List=['1','2','3','4','5','6','7','8','9','10']
+    CTR = 0
+    for Num in List:
+        print("List index is :", CTR)
+        CTR += 1 
+
+### Below is some more detailed use of incrementers. Here we are incrementing (adding plus one) each time we encounter a specific character. The below code is simply counting the number of bases (A, T, C, and G) in a DNA sequence. Notice here and above that initializing incrementers set to zero before entering a for loop is good control.
+
+
+
     num_a = 0
     num_c = 0
     num_g = 0
@@ -190,13 +211,7 @@ Notice above we are doing three things.
     print("There are %d G bases" % (num_g))        
     print("There are %d T bases" % (num_t))        
 
-### Here is an example of how to simply increment a counter to keep track of how far you have gone through a list. If you start with zero, you will essentially be tracking correct list indices (because the first list element is 0)
-
-    List=['1','2','3','4','5','6','7','8','9','10']
-    CTR = 0
-    for Num in List:
-        print("List index is :", CTR)
-        CTR += 1    
+   
 
 
 
