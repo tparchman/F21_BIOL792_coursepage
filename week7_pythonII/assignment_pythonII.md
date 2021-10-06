@@ -9,9 +9,11 @@
 <p>&nbsp;</p>
 
 
-## 1. A little more string work. This problem involves working with a DNA sequence that has some information in front of it. To start your program, type (or copy) this line into your program and assign it to a string.
+## 1. A bit more string work. This problem involves working with a DNA sequence that has some information in front of it. To start your program, type (or copy) this line into your program and assign it to a string.
 
     DNA_Info = 'SAMPLE_110 Pop3 atatctcgcggggtttatatatattatttaaa'
+
+Note: Chapter 8 of Haddock and Dunn walks you through a number of very similar examples for working with DNA sequences.
 
 A. Get rid of everything other than the DNA sequence (using `str.replace`), and save this to another string.
 
