@@ -1,0 +1,60 @@
+
+=====
+PACIFIC METEROLOGY EXAMPLE
+
+To get plots of all the wave data available:
+
+1. All the stations are listed here.
+
+     http://www.ndbc.noaa.gov/maps/south_pacific_hist.shtml
+     
+     View the source to see the station numbers, starting with 55...
+
+2.	If you click on a station, and then choose "View Station Page" at the bottom,
+	you will come to a page like this:
+	http://www.ndbc.noaa.gov/station_page.php?station=51426
+
+3. Right-click on the plot of water column height and open in a new tab (or copy image address)...
+	http://www.ndbc.noaa.gov/station_page.php?station=51426&type=0&startyear=2009&startmonth=09&startday=27&endyear=2009&endmonth=09&endday=30&submit=Submit
+
+4. You want to insert the list of stations in {} into that location...
+
+	Copy the list of stations shown in step 1, and use reext to convert to a list of numbers... 
+	55013,55012,51406,51425,51426,52406,54401,55015
+
+5. Then insert those numbers into the image url from step 3
+    add quotes and a target location to the end using the -o image#1.gif format...
+
+	curl "http://www.ndbc.noaa.gov/plot_dart.php?station={55013,55012,51406,51425,51426,52406,54401,55015,51003}&uom=M&width=400&height=220&start=20090927000000&end=20090930235959" -o seaHeight#1.gif
+
+6. cd to your sandbox and paste that command in the terminal window.
+
+7. You can do a similar thing with the Monterey buoys, using the IDs on this page:
+	http://www.ndbc.noaa.gov/maps/Monterey_Bay.shtml
+
+    and inserting them to the plot locator on this page:
+
+    http://www.ndbc.noaa.gov/plot_met.php?station=46093&meas=wspd&uom=E&time_diff=-7&time_label=PDT
+
+    curl "http://www.ndbc.noaa.gov/plot_met.php?station={46240,46239,OMHC1,MLSC1,DMBC1,NLEC1,46237,ELXC1,SFXC1,46095,46236,TIBC1,MTYC1,RTYC1,AAMC1,RCMC1,PCOC1,FTPC1,46013,ANVC1,PTAC1,46014,46028,46093,46042,46092,46091,46012,46214,46026,PRYC1}&meas=wspd&uom=E&time_diff=-7&time_label=PDT" -o wspd#1.gif
+
+-----------------------------------------
+FOR THE MONTEREY area historical data in text format for 2008:
+
+1. From the source, grab a list of buoy IDs from this page:
+
+	http://www.ndbc.noaa.gov/maps/Monterey_Bay.shtml
+
+2. And convert them to a list of numbers using regular expressions:
+	Search: .*alt="(\w+)".*\r
+	Replace \1,
+	
+	(In words, find the word that is in quotes after alt=, and throw the rest away...)
+
+3. Insert this list, in {} into the first part of this URL, before the h2008:
+
+    http://www.ndbc.noaa.gov/download_data.php?filename=46093h2008.txt.gz&dir=data/historical/stdmet/
+
+    curl "http://www.ndbc.noaa.gov/view_text_file.php?filename={46237,ELXC1,SFXC1,46095,46236}h2008.txt.gz&dir=data/historical/stdmet/" -o historical#1.txt
+
+It is hit or miss -- don't worry if you get some File Not Found/Empty files.

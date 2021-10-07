@@ -1,0 +1,38 @@
+# Convert a list of journal records to bibliographic records
+# Used in Chapter 6 of PCfB
+# 
+# You can paste the openurl query below into a web browser.
+# http://www.crossref.org/openurl/?title=Nature&date=2008&volume=452&spage=745&pid=demo@practicalcomputing.org
+# and it will redirect you to the actual article which matches those criteria.
+# 
+# To retrieve the article info in basic text (xml) format, append &redirect=false
+# http://www.crossref.org/openurl/?title=Nature&date=2008&volume=452&spage=745&redirect=false&format=unixref&pid=demo@practicalcomputing.org
+#
+# In the list below, records are in the format Journal%20Name\tYear\tVolume\tStartPage
+# Year value is optional, but the tab that follows it must be there.
+# Hash mark indicates comments lines, not executed by shell
+#
+# To convert the list to a script, first copy the records to a new file.
+# Search and replace spaces with \%20
+# Then do the following search/replace pair:
+# Search_term: (.+)\t(\d*)\t(\d+)\t(\d+)
+# Replace_term: curl "http://www.crossref.org/openurl/?title=\1\&date=\2\&volume=\3\&spage=\4\&pid=demo@practicalcomputing.org\&redirect=false\&format=unixref"
+# 
+# The resulting file then can be imported with the CrossRef plug-in for Papers 
+# This plugin can be downloaded at computingforbiologists.org
+# 
+# To do a DOI search, use this URL as the basis for the curl command:
+# http://www.crossref.org/openurl/?pid=demo@practicalcomputing.org&id=doi:10.1103/PhysRev.47.777&redirect=false&format=unixref
+
+
+echo "<xml>"
+American Naturalist	1880	14	617
+Biol. Bull.	1928	55	69
+PNAS	1965	53	187
+Science		160	1242
+J Mar Biol Assoc UK	2005	85	695
+Biochem. Biophys. Res. Comm.	1985	126	1259
+Gene	1992	111	229
+Nature Biotechnology		17	969
+Phil Trans Roy Soc B	1992	335	281
+echo "</xml>"

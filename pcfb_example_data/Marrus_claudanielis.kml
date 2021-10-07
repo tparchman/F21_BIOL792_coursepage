@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://earth.google.com/kml/2.2">
+<Document>
+
+<Placemark>
+ <name>Tiburon 596</name>
+ <description>Tiburon 596	19-Jul-03	36 36.12 N	122 22.48 W	1190	holotype</description>
+ <Point>
+  <altitudeMode>absolute</altitudeMode>
+  <coordinates>-122.374667, 36.602000, -1190</coordinates>
+ </Point>
+</Placemark>
+<Placemark>
+ <name>JSL II 1411</name>
+ <description>JSL II 1411	16-Sep-86	39 56.4 N	70 14.3 W	518	paratype</description>
+ <Point>
+  <altitudeMode>absolute</altitudeMode>
+  <coordinates>-70.238333, 39.940000, -518</coordinates>
+ </Point>
+</Placemark>
+<Placemark>
+ <name>JSL II 930</name>
+ <description>JSL II 930	18-Aug-84	40 05.03 N	69 03.01 W	686	Youngbluth (1989)</description>
+ <Point>
+  <altitudeMode>absolute</altitudeMode>
+  <coordinates>-69.050167, 40.083833, -686</coordinates>
+ </Point>
+</Placemark>
+<Placemark>
+ <name>Ventana 1575</name>
+ <description>Ventana 1575	11-Mar-99	36 42.24 N	122 02.52 W	767	</description>
+ <Point>
+  <altitudeMode>absolute</altitudeMode>
+  <coordinates>-122.042000, 36.704000, -767</coordinates>
+ </Point>
+</Placemark>
+<Placemark>
+ <name>Ventana 1777</name>
+ <description>Ventana 1777	16-Jun-00	36 42.60 N	122 02.70 W	934	</description>
+ <Point>
+  <altitudeMode>absolute</altitudeMode>
+  <coordinates>-122.045000, 36.710000, -934</coordinates>
+ </Point>
+</Placemark>
+<Placemark>
+ <name>Ventana 2243</name>
+ <description>Ventana 2243	9-Sep-02	36 42.48 N	122 03.84 W	1001	</description>
+ <Point>
+  <altitudeMode>absolute</altitudeMode>
+  <coordinates>-122.064000, 36.708000, -1001</coordinates>
+ </Point>
+</Placemark>
+<Placemark>
+ <name>Tiburon 515</name>
+ <description>Tiburon 515	24-Nov-02	36 42.00 N	122 01.98 W	1156	</description>
+ <Point>
+  <altitudeMode>absolute</altitudeMode>
+  <coordinates>-122.033000, 36.700000, -1156</coordinates>
+ </Point>
+</Placemark>
+<Placemark>
+ <name>Tiburon 531</name>
+ <description>Tiburon 531	13-Mar-03	24 19.02 N	109 12.18 W	1144	</description>
+ <Point>
+  <altitudeMode>absolute</altitudeMode>
+  <coordinates>-109.203000, 24.317000, -1144</coordinates>
+ </Point>
+</Placemark>
+<Placemark>
+ <name>Tiburon 547</name>
+ <description>Tiburon 547	31-Mar-03	24 14.04 N	109 40.02 W	1126	</description>
+ <Point>
+  <altitudeMode>absolute</altitudeMode>
+  <coordinates>-109.667000, 24.234000, -1126</coordinates>
+ </Point>
+</Placemark>
+<Placemark>
+ <name>JSL II 3457</name>
+ <description>JSL II 3457	26-Sep-03	40 17.77 N	68 06.68 W	862	Francesc Pages (personal communication)</description>
+ <Point>
+  <altitudeMode>absolute</altitudeMode>
+  <coordinates>-68.111333, 40.296167, -862</coordinates>
+ </Point>
+</Placemark>
+
+</Document>
+</kml>
