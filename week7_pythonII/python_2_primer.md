@@ -107,7 +107,7 @@ Reversing strings is a bit less straight forward. The text below looks funny, yo
     Seq='ATCGGGGGG'
     Rev = Seq[::-1]
 
-# 2. `if`, `else`, `elif`
+# 2. Conditional statements: `if`, `else`, `elif`
 
 Comparison operators, such as those listed below, will return boolean values in some statements (True or False; 1 or 0). You will find yourself making regular use of these in conditional statements, such as `if`, `else`, and `elif`.
 <p>&nbsp;</p>
@@ -212,7 +212,27 @@ Notice above we are doing three things.
     print("There are %d T bases" % (num_t))        
 
    
+# 4. List comprehension
 
+It is common to want to execute the same code on each element of a list and to want to return those values to a new list. This can be done longform within a for loop, by performing some calculation or operation on each list element and appending that to a new list as below.
+
+    MyList=list(range(0,10))
+    TenfactorList = [] # initializing empty list
+    for num in MyList:
+        TenfactorList.append(num*10)
+    print(TenfactorList)
+    
+However, list comprehension in python offers a more compact way to do this. As demonstrated below, you can directly operate on each value in a list, sending the results to a new list in a single line of code.
+
+    MyList=list(range(0,10))
+    TenfactorList = [num*10 for num in MyList] # List comprehension, very nice.
+    print(TenfactorList)
+
+Below are a few additional examples of list comprehension
+
+    Breedshort = ['golden', 'labrador', 'flatcoat', 'chesapeake', 'goldador']
+    Breedlong = [dog.' retriever' for dog in Breedshort]
+    print(Breedlong)
 
 
 
