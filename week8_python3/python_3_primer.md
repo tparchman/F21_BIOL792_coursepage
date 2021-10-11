@@ -19,7 +19,7 @@ For almost every task you attempt with Python, you will need to 1) open and read
 Input involves several steps
 
 - **A.** assigning the name of the file to a variable (based on its location), and opening a connection to the file (creating a file object with `open()`)
-- **B.** reading the contents of the file (`.read`)
+- **B.** reading the contents of the file with `.read`, using one of several built in methods (detailed below)
 <p>&nbsp;</p>
 
 ### A. Establishing file handles: `open()`can be used to open a connection (also could be called a file handle) to files stored in directories on your computer. 
@@ -57,7 +57,7 @@ If you provide a file name as an argument, `sys.argv[1]`, as above, the second e
 	import sys
 	IN = open(sys.argv[1], 'r')
 
-The [1:] below skips the first argument, which is the script itself, and will access the remaining command line arguments.
+The [1:] below skips the first argument in the list (sys.argv[0]), which is the script itself, and will access the remaining command line arguments.
 
     import sys
     for Arg in sys.argv[1:]:       
@@ -73,15 +73,17 @@ you should see Lebron, AD and Rondo printed consecutively to the screen
 
 ## B. Reading data from a file.
 
-To read the *entire* contents of file
+### Below is example sytax for several ways to read data from files:
+
+To read the *entire* contents of file (note, this is rarely useful for large files, and in general)
 
     IN = IN_file.read()
 
-To read one line at a time (you will often, if not usually, want to do this with big text data)
+To read one line at a time:
 
     IN = IN_file.readline()
 
-If you wanted to read all of the lines in a file straight into a list (I would note that I do not commonly do this)
+If you wanted to read all of the lines in a file straight into a list:
 
     File_as_List = IN_file.readlines()
 
@@ -89,14 +91,16 @@ Or:
 
     list(IN_file)
 
+### Looping through file objects with `for`, reading one line at a time. *This is often an ideal way to work with data from files.*
+
 What you will often (perhaps usually) want to do is loop over a file to read each line one at a time from the file. In other words, we will run this block of code on the first line of the file, then we will run this block of code on the second line, and so on. This is memory efficient, fast, and leads to simple code:
 
     for Line in IN:
-        print (Line)
+        print(Line)
 
 Once you start processing files one line at a time,  you will realize that line ending characters (`\n`) often get in the way, and can be most effectively dealt with by removing them right off the bat. We can use the `.strip` function to do this.
 
-The below code provides a simple example of specifying a file for reading, opening the file, looping through file one line at a time with a `for` loop, and incrementing to keep track of how many lines are being processed.
+The below code provides a simple example of specifying a file for reading, opening the file, looping through file one line at a time with a `for` loop, and incrementing to keep track of how many lines are being processed. Note, that once you read each line as a scalar, you can essentially do whatever you want within the `for` loop that is extracting lines from the file.
 
     IN_Name = sys.argv[1]
     IN = open(IN_Name, 'r')
@@ -110,6 +114,26 @@ The below code provides a simple example of specifying a file for reading, openi
 	
     print(LineNumber) # this will be the number of lines processed of IN
     IN.close() #closing IN, see below.
+
+## C. Keeping file names, file objects (also called file handles or file connections), and file contents straight.
+
+Below are three lines of code to 1. create a file name, 2. make a file object, or connection, from your code to that file, and 3. read all contents of that file into a single scalar. Each line below is described as a reminder of how they differ.
+
+    input_file= "~/python_practice/DNA_seq_allosaurus.fasta"
+    IN = open(input_file)
+    my_file_contents = IN.read()
+
+1). Create file name pointing to location on device:
+
+    input_file= "~/python_practice/DNA_seq_allosaurus.fasta"
+
+2). Makin a file object, or connection, from your code to that file:
+
+    IN = open(input_file)
+
+3). Using the `.read()` function to read all contents of that file into a single scalar:
+
+    my_file_contents = IN.read()
 
 ## II. Output
 
@@ -206,3 +230,15 @@ The `^` character can be used to anchor the pattern at the beginning of the stri
         print("Seq does not end with T.\n")
 
 This is just a brief introduction to get you started. We will cover more depth on working with regular expressions next week.
+
+Starting next week we will learn more detailed and useful use of the `re` library for matching, extracting, and otherwise taking advantage of the power of regular expression searches. The below table summarizes the functions we will learn, and what they can accomplish:
+
+
+| Function | utility |
+|---------- | ---------- |
+|`re.search`| returns boolean for match occurrence in string|
+|`re.iter`| processes multiple matches and returns a list of match objects             |
+|`re.findall`|Returns all non-overlapping matches of pattern as a list |            |
+|`re.sub`|Find and replace expression match|
+|`re.split`|Split string by the occurrences of pattern            |
+|`re.escape`|Escape special characters in pattern|

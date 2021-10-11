@@ -9,13 +9,13 @@
 <p>&nbsp;</p>
 
 
-### This week you will work more with lists, and more importantly, will get comfortable reading IN and writing OUT. We are not literally reading in the contents of entire files at once, rather we are making connections (file objects or handles) between our program and these files. For each problem you will need to use a (`for`) loop to read data in one line at a time. The python_3_primer.md and slides from class should help to get you started.
+### This week you will work more with lists, and more importantly, will get comfortable reading IN and writing OUT. We are not literally reading in the contents of entire files at once, rather we are making connections (file objects or handles) between our program and these files. For each problem you will need to use a `for` loop to read data in one line at a time. The python_3_primer.md and slides from class should help to get you started.
 <p>&nbsp;</p>
 
-1).Read in the input file genenames.txt line by line, and add the values from the second "column" of each line to a list. This file has two columns, the second of which lists gene names. Print the list to check that your script has worked. The output should be the second "column" of the file genenames.txt.
+1).Read in the input file **genenames.txt** line by line, and add the values from the second "column" of each line to a list. This file has two columns, the second of which lists gene names. Print the list to check that your script has worked. The output should be the second "column" of the file genenames.txt.
 <p>&nbsp;</p>
 
-**Hints**: You will need to use two lists, the first of which will be created by splitting each line into an list so that you can work on it. 2. You will need to ‘add’ elements to the second list (using `.append`) with each iteration of a while loop.
+**Hints**: You might want to use two lists, the first of which might be created by splitting each line into a list so that you can extract the second element from it. 2. You may need to ‘add’ elements to the second list (using `.append`) with each iteration of a while loop.
 
 <p>&nbsp;</p>
 
@@ -42,8 +42,10 @@ Instead of hardcoding the file name into your script, use `sys.argv` to open a f
 
 3). `+=` will be useful, as you will want to keep a running total of a few variables each iteration through your for loop in order to get the total counts of C and G and the total equence length necessary for calculating the GC content for ALL sequences in the file together. 
 
-4).Each ID line starts with a ">". You will not want to perform any calculations on this line. Hence you will need to recognize lines that start with ">".  A regular expression can do that for you. Maybe something like:
+4).Each ID line starts with a ">". You will not want to perform any calculations on this line, but will want to print it to OUT. Hence you will need to recognize lines that start with ">".  A regular expression can do that for you. Maybe something like:
 
     if re.search("^>", DNAseq):
 
 For lines that start with A, T, C, or G, you will want to do something else.
+
+5).To calculate the GC content for teh entire collection of sequences, you will want to keep a running total of the counts of A, T, G, and C, as well as the total sequence length, and then perform a calculation on those running sums *outside of the `for` loop.*
