@@ -234,5 +234,11 @@ Below are a few additional examples of list comprehension
     Breedlong = [dog.' retriever' for dog in Breedshort]
     print(Breedlong)
 
+Converting fahrenheit to celsius:
+
+    ftemps = [23,25,15,12,-3,-9,5]
+    ctemp=[((f - 32)*(5/9)) for f in ftemps]
+    print(ctemp)
+
 
 
