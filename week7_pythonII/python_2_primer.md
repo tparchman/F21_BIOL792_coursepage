@@ -240,5 +240,16 @@ Converting fahrenheit to celsius:
     ctemp=[((f - 32)*(5/9)) for f in ftemps]
     print(ctemp)
 
+Converting kilograms to pounds
+
+    kgram=[8, 12, 15, 30, 55, 65, 104, 111, 10000]
+    pounds=[(k * 2.20462) for k in gram]
+    print(pounds)
+
+Calculating cirumference based on radius
+
+    radius=[10000, 350, 475, 750, 10000]
+    circ=[(2 * r * 3.1416) for r in radius]
+    print("list of cirumferences: ", circ)
 
 
