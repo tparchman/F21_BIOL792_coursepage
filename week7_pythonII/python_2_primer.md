@@ -228,28 +228,19 @@ However, list comprehension in python offers a more compact way to do this. As d
     TenfactorList = [num*10 for num in MyList] # List comprehension, very nice.
     print(TenfactorList)
 
-Below are a few additional examples of list comprehension
+Below are a few additional examples of list comprehension.
 
     Breedshort = ['golden', 'labrador', 'flatcoat', 'chesapeake', 'goldador']
-    Breedlong = [dog.' retriever' for dog in Breedshort]
+    Breedlong = [dog + ' retriever' for dog in Breedshort]
     print(Breedlong)
 
 Converting fahrenheit to celsius:
 
-    ftemps = [23,25,15,12,-3,-9,5]
-    ctemp=[((f - 32)*(5/9)) for f in ftemps]
-    print(ctemp)
+    Ftemps=[62, 55, 73, 77, 80, 32, 27]
+    Ctemps=[(5/9 * (ft-32)) for ft in Ftemps]
+    print(Ctemps) 
 
-Converting kilograms to pounds
+Converting quarts to liters:
 
-    kgram=[8, 12, 15, 30, 55, 65, 104, 111, 10000]
-    pounds=[(k * 2.20462) for k in gram]
-    print(pounds)
-
-Calculating cirumference based on radius
-
-    radius=[10000, 350, 475, 750, 10000]
-    circ=[(2 * r * 3.1416) for r in radius]
-    print("list of cirumferences: ", circ)
-
-
+    Qvol = [.5, .3, .31, .45, 1.6, 1.5, 1.8]
+    Lvol = [q * .946353 for q in Qvol] 
