@@ -143,7 +143,7 @@ So in the string below, specifying search with "\@" will produce a match, while 
 | \b |	Backspace |	
 | \f |	Form Feed |	
 
-.^$*+?()[{\|
+
 
 Example usage. If you run the same searches below without "\" you will see that no match will be returned.
 
@@ -158,7 +158,9 @@ Example usage. If you run the same searches below without "\" you will see that 
         print("Matched")
 ## `re.finditer()`
 
-`re.finditer()` can process multiple matches and returns a list of match objects which can be further processed in a loop.
+`re.search` is useful for finding out if a pattern exists in a string or a line of data, and it can store a single match, but its usefulness is limited to a single match. `re.finditer()` can process multiple matches and usefully returns a list of match objects which can be further processed in a loop.
+
+The below expression matches to characters that are NOT A, T, C or G, and the for loop is used to print each match and its starting position.
 
     Seq = "CGCTCNTAGATGCGCRATGACTGCAYTGC" 
 
@@ -168,33 +170,71 @@ Example usage. If you run the same searches below without "\" you will see that 
         pos  = m.start() 
         print(base + str(pos))
 
+## Matching repetitive patterns.
+
+We will cover this in more detail below with `re.findall`, but here show a few examples using `re.finditer`.
+
+To extract AT repeated **2 or more**  times, and to loop through the list of matches:
+
+    SSR = 'ATATATGGGCGATATATATCCATATC'
+    matches=re.finditer("(AT){2,}", SSR)
+    for m in matches:
+        print(m.group())
+
+To extract ATC repeated **3 or more**  times:
+
+    SSR = 'ATCATCATCATCATGGGCGATATATATCCATATC'
+    matches=re.finditer("(ATC){3,}", SSR)
+    for m in matches:
+        print(m.group())
+
+
 ## `re.findall()`
 
-`re.findall` can process multiple matches and returns the text of the matches themselves as strings. Thus, rather than returning a list of match objects, this returns a list of strings. Useful for capturing or counting matches.
+`re.findall` can process multiple matches and returns the text of the matches themselves as strings. Thus, rather than returning a list of match objects, this returns a list of strings. Useful for capturing or counting matches, and produces lists that are easy to work with..
 
 In each below use of `re.findall` each match is stored in a list. We will talk more about capturing matches below.
 
     ID = "CO_BC_13292929 0 1 2 0 2 1 1 "
     re.findall("[A-Z]+",ID) # returns['CO', 'BC']
     re.findall("\d{3,}",ID) # returns['13292929']
-    re.findall("\s\d",ID) # returns [' 0', ' 1', ' 2', ' 0', ' 2', ' 1', ' 1']
 
-## Matching repetitive patterns. 
+    match = re.findall("\s\d",ID) 
+    for m in match:
+        print(m)
+    # prints [' 0', ' 1', ' 2', ' 0', ' 2', ' 1', ' 1']
 
-To extract AT repeated **2 or more**  times:
+### Storing matches of repetitive patterns. Similar to above with `re.finditer`, here is an alternative way that usefully puts matches directly into a list.
+
+To extract AT repeated **2 or more**  times, and to loop through the list of matches:
 
     SSR = 'ATATATGGGCGATATATATCCATATC'
-    re.findall("(AT){2,}", SSR)
+    matches=re.findall("(AT){2,}", SSR)
+    for m in matches:
+        print(m)
+
+Take note of the parentheses surrounding the base pattern (AT) above, and especially what the print statement above produced. Specifically, while the number of matches stored in the list is correct (and such use will be useful for this weeks programming task), the pattern saved as a group was the base AT, not the entire repeating region.
+
+With a slight change (the addition of ()s around the entire expression), the exact repeating match and the base are stored in a slightly more complex list. Try the below code, and pay particular attention to how parentheses are organized and the printed output.
+
+    SSR = 'ATATATGGGCGATATATATCCATATC'
+    matches=re.findall("((AT){2,})", SSR)
+    for m in matches:
+        print(m)
 
 To extract ATC repeated **3 or more**  times:
 
     SSR = 'ATCATCATCATCATGGGCGATATATATCCATATC'
-    re.findall("(ATC){3,}", SSR)
+    matches=re.findall("((ATC){3,})", SSR)
+    for m in matches:
+        print(m)
 
-Or if we wanted to extract regions of DNA that only have T and A for 5 consecutive bases:
+Or if we wanted to extract regions of DNA that only have T and/or A for 5 consecutive bases:
     
     SSR = 'ATAAAATCATCATATTTATGGGCGATATATATCCATATC'
-    re.findall("[AT]{5,}", SSR)
+    matches=re.findall("[AT]{5,}", SSR)
+    for m in matches:
+        print(m)
 
 
 
@@ -219,7 +259,7 @@ Another example, lets say we want to know how many 'AT' repeats occur in a DNA s
     Seq = "CTGCATTATATCGTACGAAATTATACGCGCGATATATATATATATAT"
     len(re.findall('AT', Seq)) ## returns 13
 
-Below, an expression is used to match regions with only A and/or T for 4 or more consecutive bases. The results of `refindall` are then used in a for loop to print the length of each AT rich match.
+Below, an expression is used to match regions with only A and/or T for 4 or more consecutive bases. The results of `re.findall` are then used in a for loop to print the length of each AT rich match.
 
     Seq = "CTGCATTATACGAATTATACGCGCGATATAATACATATAT"
     ATlist = re.findall("[AT]{4,}", Seq)
@@ -243,6 +283,38 @@ Another way of looking at this with more flexible expression:
     print(m.group(1)) # prints 'Loxia'
     re.search("(\w+) (\w+)", Name).group(2) # returns 'curvirostra'
 
+Note that the above uses of `re.finditer` and `re.findall` also illustrated methods for storing matches, while also looping through lists to process those.
+
+Storing lists of matches with `re.findall`:
+To extract AT repeated **2 or more**  times, and to loop through the list of matches:
+
+    SSR = 'ATATATGGGCGATATATATCCATATC'
+    matches=re.findall("((AT){2,})", SSR)
+    for m in matches:
+        print(m)
+
+To extract ATC repeated **3 or more**  times:
+
+    SSR = 'ATCATCATCATCATGGGCGATATATATCCATATC'
+    matches=re.findall("((ATC){3,})", SSR)
+    for m in matches:
+        print(m)
+
+Storing lists of matches with `re.finditer`:
+
+To extract AT repeated **2 or more**  times, and to loop through the list of matches:
+
+    SSR = 'ATATATGGGCGATATATATCCATATC'
+    matches=re.finditer("(AT){2,}", SSR)
+    for m in matches:
+        print(m.group(), len(m.group()))
+
+To extract ATC repeated **3 or more**  times:
+
+    SSR = 'ATCATCATCATCATGGGCGATATATATCCATATC'
+    matches=re.finditer("(ATC){3,}", SSR)
+    for m in matches:
+        print(m.group(), len(m.group()))
 
 ## Splitting strings using a regular expression: `re.split`
 
@@ -251,6 +323,13 @@ We are accustomed to splitting strings based on delimiters such as ',', '\s', an
     Seq = "ATGGGNCTGANNTAAAGNNNNGTCCCCNNNTTTTTTT"
     MotifList = re.split("N{2,}", Seq) # splitting by '2 or more Ns
     print(MotifList)
+
+Comma delmited data string:
+
+    Dataline = "EcoRI,Mse1,HindIII,JoeBurrow,JamarChase"
+    DataList = re.split(",", Dataline) # splitting by '2 or more Ns
+    for element in DataList:
+        print(len(element))
 
 ## `re.sub`
 `re.sub` can be used to replace a string that matches a regular expression. It takes  a regular expression pattern in the first argument, a new string in the second argument, and the string to be processed in the third argument.
