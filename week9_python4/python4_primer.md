@@ -1,9 +1,9 @@
-# Python primer IV, Data Science I, Fall 2020. 
+# Python primer IV, Data Science I, Fall 2021. 
 
 ## Topics to cover
 
 - working with regular expressions
-- various `re` functions (`re.search`, `re.finditer`, `re.findall`)
+- various `re` functions (`re.search`, `re.finditer`, `re.findall`, `re.sub`, )
 - counting and storing matches
 
 ## Useful materials
@@ -11,6 +11,8 @@
 - updated document that has corrections for python3 where necessary (PythonLesson2_Chapter9.pdf, PythonLesson3_Chapter10.docx)
 - regular expression cheat sheet (python-regular-expressions-cheat-sheet-1.pdf)
 - [regular expression tester](https://regex101.com).
+- [python for biologists regular expression lesson](https://pythonforbiologists.com/tutorial/regex.html)
+- [pythonguru regular expression tutorial](https://thepythonguru.com/python-regular-expression/)
 <p>&nbsp;</p>
 
 
@@ -38,7 +40,7 @@ We can search a specified string, using an `if` statement as an example of how t
         print("Stop codon (TAG) found.\n")
 
 
-The `^` character can be used to anchor the pattern at the beginning of the string, and the `$` anchors the pattern at the end
+The `^` character can be used to anchor the pattern at the beginning of the string, and the `$` anchors the pattern at the end. Note that `^` used in a character class list (characters enclosed in brackets), such as [^ATCG] means something different (in this case it would any character that is NOT ATCG). We will cover this further below.
     
     Seq = "ATCGGGGCCTAGAAT"
     if re.search("^A", Seq):
@@ -51,7 +53,7 @@ The `^` character can be used to anchor the pattern at the beginning of the stri
 We can use **alternation** (pattern A OR pattern B) to increase flexibility of  expressions.
 
     Seq = "ATCGGGGCCTAGAAT"
-        if re.search("CC(C|T)", Seq):
+    if re.search("CC(C|T)", Seq):
         print("Seq has 'CCC' or 'CCT'.\n")
 
 
@@ -61,12 +63,35 @@ We can use **alternation** (pattern A OR pattern B) to increase flexibility of  
     re.search('ATC', Seq)
     #returns: <re.Match object; span=(0, 3), match='ATC'>
 
+Matches can be saved to variables:
+
+    Seq = 'ATCGGGGGGATCGGGATC'
+    Seqmatch=re.search('ATC', Seq)
+    print(Seqmatch)
+
 Matches can be extracted as below, although we will cover capturing and storing matches in more detail below.
 
     Seq = 'ATCGGGGGGATCGGGATC'
     re.search('ATC', Seq).group() #returns: 'ATC'
 
+Match objects have multiple elements, which can be individually extracted:
+
+    Seq = 'ATCGGGGGGATCGGGATC'
+    Seqmatch=re.search('ATC', Seq)
+    print(Seqmatch.start())  # prints start position of match
+    print(Seqmatch.group()) # prints matched string group
+    print(Seqmatch.end()) # prints matched string group
 Note that above, `re.search` only stores one ATC, even though there are 3 in Seq. Thats because `re.search` only makes one match. `re.findall` and `re.finditer` to find, track, and store multiple matches. More on these below.
+
+### Using `r""` to search raw text only.
+
+Regular expression patterns preceded by `r` will search only raw text, and not special characters. For examples above, it won't have any effect, but Im showing this notation here because you will see it in some of the additional tutorials.
+
+    Seq = 'ATCGGGGGGATCGGGATC'
+    Seqmatch=re.search(r'ATC', Seq)
+    print(Seqmatch)
+
+It will matter in strings that have special characters, such as '\n', which is a unix line ending. When preceded in a match statement by 'r', backslashes are not treated differently than any other charater. So r"\n" is a two-character string containing '\' and 'n', while "\n" is a one-character string containing a newline. Usually patterns will be expressed in Python code using this raw string notation, so we will mostly use in what follows.
 
 ## Basic syntax for regular expression matching
 
@@ -88,7 +113,7 @@ Syntax for regular expressions is mostly consistent across many languages, inclu
 |^ | beginning of string anchor |
 |$ | end of string anchor  |
 |\d{3,}| 3 or more consecutive digits|
-|[a-z| any lower case letter|
+|[a-z]| any lower case letter|
 |[A-Z]| any upper case letter|
 |[^ATCG]| any character other than A, T, C, G|
 |\\$| matches "$", special characters 'escaped' with `\`|
@@ -98,6 +123,12 @@ Syntax for regular expressions is mostly consistent across many languages, inclu
 ## A note on special characters
 
 Special characters require a `\` escape in regular expressions. Thus, matching '&' in a string of text requires an expresssion such as "\&". In addition, `\` is used to indicate certain special characters such as line endings, tabs, and other characters listed above. Examples below.
+
+So in the string below, specifying search with "\@" will produce a match, while using "@" will not. Try it out to convince yourself.
+
+    Seq = '@ATCGGGGGGATCGGGATC'
+    re.search("\@", Seq)   # returns a match
+    re.search("@", Seq)   # does not return a match
 <p>&nbsp;</p>
 
 | Expression | Translation |
@@ -114,7 +145,7 @@ Special characters require a `\` escape in regular expressions. Thus, matching '
 
 .^$*+?()[{\|
 
-Example usage.
+Example usage. If you run the same searches below without "\" you will see that no match will be returned.
 
     X = "COD * ? + \n"
     if re.search("\+", X):  
