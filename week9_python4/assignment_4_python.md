@@ -2,7 +2,8 @@
 ## Topics to cover
 - Working with files: Input/Output
 - `for` loops, processing files one line at a time.
-- Regular expressions!
+- using `.readline()` within `for` loops to process one line at a time.
+- Regular expressions to find exact matches, and to find varible length repeat matches.
 - `sys.argv`, `re.search`
 <p>&nbsp;</p>
 
@@ -21,7 +22,7 @@ Print to screen or write to an outfile that contains a report with several featu
 
 1. The total number of sequences in each file. (hint: Ctr += 1)
 
-2. The number of EcoRI, MseI, and HindIII restriction enzyme cut sites. This will involve counting the number of exact matches for the cut site sequences in each line, and summing that over all of the lines. One of the slides from class has an example of how to keep count of multiple regular expression matches in a scalar, and another slide has an example of how to add these counts onto a total with each iteration through a for loop.
+2. The number of EcoRI, MseI, and HindIII restriction enzyme cut sites. This will involve counting the number of exact matches for the cut site sequences in each line, and summing that over all of the lines. The primer for this week and one of the slides from class has an example of how to keep count of multiple regular expression matches in a scalar, and another slide has an example of how to add these counts onto a total with each iteration through a for loop.
 <p>&nbsp;</p>
 
 ### **Task 2**: Here we want to use some more flexible regular expressions to find and count all of the microsatellite loci that represent several types of repeats in these files. Microsatellites or simple sequence repeats (SSRs) are long stretches of repetitive DNA that are often targeted for genotype development to their high polymorphism levels. A simple microsatellite would be a long stretch of AT repeated: 
@@ -30,9 +31,9 @@ Print to screen or write to an outfile that contains a report with several featu
 
 Your script should 
 
-1. Count the number of AT (dinucleotide) microsatellites that have at least 6 repeats.
-2. Count the number of ATC (trinucleotide) microsatellites that have at least 6 repeats.
-3. Count the number of GA (dinucleotide) followed by anything microsatellites with at least 5 repeats
+1. Count the number of AT (dinucleotide) microsatellites that have at least 4 repeats.
+2. Count the number of ATC (trinucleotide) microsatellites that have at least 4 repeats.
+3. Count the number of GA (dinucleotide) followed by anything microsatellites with at least 4 repeats
 
 4. Let’s say we are not only counting SSRs, but that we want to build primers or DNA baits to specifically genotype SSR regions in these genomes. To do this, we would want to identify the SSRs, but then also write to a different file all of the sequences containing SSRs. So, the sequences containing SSR, along with their Fasta identifier lines (those starting with ">") matches should be written to a file.
 
@@ -47,6 +48,13 @@ Hints:
 	    Fasta = Line
 	    Seq = IN.readline()
 	    Seq = Seq.strip("\n")
+
+The above code will efficiently process lines of data in pairs. So, for alternating lines that look like:
+
+	>seq2.prot.hox3 pos:1122424444
+	ATATATATCGGGCGTAAAATGGCGCTAGTTTGGGCCAATATTTTTTTAAAAAAAAAAAAAAAAAAAAA
+
+The first line will be stored in the Fasta variable, and the second line will be stored as Seq. Thus, each time through IN, two lines will be processed. One with the fasta ID, and one with the DNA sequence content.
 
 <p>&nbsp;</p>
 
