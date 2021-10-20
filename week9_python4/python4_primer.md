@@ -72,7 +72,8 @@ Matches can be saved to variables:
 Matches can be extracted as below, although we will cover capturing and storing matches in more detail below.
 
     Seq = 'ATCGGGGGGATCGGGATC'
-    re.search('ATC', Seq).group() #returns: 'ATC'
+    match= re.search('ATC', Seq)
+    print(match.group()) #returns: 'ATC'
 
 Match objects have multiple elements, which can be individually extracted:
 
