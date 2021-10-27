@@ -33,7 +33,7 @@ Your script should
 
 1. Count the number of AT (dinucleotide) microsatellites that have at least 4 repeats.
 2. Count the number of ATC (trinucleotide) microsatellites that have at least 4 repeats.
-3. Count the number of GA (dinucleotide) followed by anything microsatellites with at least 4 repeats
+3. Count the number of GA (dinucleotide) with at least 4 repeats
 
 4. Let’s say we are not only counting SSRs, but that we want to build primers or DNA baits to specifically genotype SSR regions in these genomes. To do this, we would want to identify the SSRs, but then also write to a different file all of the sequences containing SSRs. So, the sequences containing SSR, along with their Fasta identifier lines (those starting with ">") matches should be written to a file.
 
@@ -41,7 +41,8 @@ Your script should
 Hints: 
 
 1). This will involve using a regular expression that has a more flexible match. The primer for this week as well as one of the slides from class illustrate examples for this type of expression.
-2. You will need to process 2 lines each round through a for loop. Below is a hint on how to do this:
+
+2). You will need to process 2 lines each round through a for loop. We used regular expression conditional statements to do this last week; below is an example (more compact, useful for lines of data which you know come in pairs) of an efficient way to read two lines at a time in a for loop:
 
     for Line in IN:
 	    Line = Line.strip("\n")

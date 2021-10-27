@@ -14,7 +14,10 @@ You can access a `.tgz` directory containing the 75 files from the course webpag
 
 Once you have downloaded and extracted the files, have a careful look at their contents. You will notice that they all have the same format, so you can use the same code to extract similar information from each file.
 
-You will need to use `open` inside a loop (e.g., `for IN in sys.argv[1:]`) so that you can read, and work on, each of the 75 files individually. 
+You will need to use `open` inside a loop so that you can read, and work on, each of the 75 files individually. Something like below will work:
+
+    for filename in sys.argv[1:]:
+        IN = open(filename, 'r')
 <p>&nbsp;</p>
 
 A. For this weeks program you are going to read in all files and make a single file that has specified data in an easily accessible format. The data of interest in each individual logger file is arranged in 4 columns (we are going to ignore the first). We want to write the information from those four columns from each .txt file to an outfile that has all of the data we are interested in. For each .txt file that is read in from `sys.argv`, you want to write the data from each column (there are four) to a row in the outfile (which will have 4 rows for each infile). The start of each line should have the name of the infile, but different features of that name need to be comma separated so that the data can eventually be sorted by that information.
