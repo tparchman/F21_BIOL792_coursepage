@@ -60,7 +60,7 @@ B. Extra. Lets say you want to to do some analyses on the temperature data alone
 	    for Line in IN:
 		    Line=Line.strip("\n")
             OUT.write(Line + "\n")
-	        IN.close()
+	    IN.close()
     OUT.close() 
 
 **2).** There are some problematic special characters in *some* of these files. To guard against them, a line of code as below will work for cleaning these things out of each line in each file.
