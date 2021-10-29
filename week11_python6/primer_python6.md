@@ -3,7 +3,7 @@
 ## Topics to cover
 
 - Dictionaries
-- More work regular expressions
+- More work with regular expressions
 - Input/Output: using loops to process many files at once.
 
 ## Useful materials
@@ -15,7 +15,7 @@
 
 ## Creating Dictionaries
 
-Dictionaries (also known as associative arrays, or hashes) are data structures that store unordered pairs of objects. Each pair consists of a key and a value. These types of structures that store pairs of data are common to many programming languages for several reasons. First, we often want one piece of information to be directly connected to another (names and phone numbers; gene name and sequence; site identifier and measurement; codons and their associated amino acids). We can pair such data using lists, but this turns out to be quite slow (and clumsy) for larger data because lists have a fixed ordering of their elements. Dictionaries are unordered, thus they have the advantage of allowing you to look up or access pairs of information much more quickly.
+Dictionaries (also known as associative arrays, or hashes) are data structures that store unordered pairs of objects. Each pair consists of a key and a value. These types of structures that store pairs of data are common to many programming languages for several reasons. First, we often want one piece of information to be directly connected to another (names and phone numbers; gene name and sequence; site identifier and measurement; codons and their associated amino acids). We can pair such data using lists, but this turns out to be quite slow (and clumsy) for larger data because lists have a fixed ordering of elements. Dictionaries are unordered, thus they have the advantage of allowing you to look up or access pairs of information much more quickly.
 
 
 Dictionaries can be created by listing key:value pairs within curly brackets, with each pair (also referred to as an item) separated by a comma. Below illustrates how to hard code a dictionary (in this case a list of names and phone numbers) consisting of three items:
@@ -30,7 +30,7 @@ While python has strict indent rules, statements can be split across lines when 
         'Jen Miles':'9875842194' 
     }
 
-Values are extracted from a dictionary by specifying the dictionary name and a key. The below would return '9875842194'
+Values are extracted from a dictionary by specifying the **dictionary name** and a key. The below would return '9875842194'
 
     print(Pbook['Jen Miles'])
 

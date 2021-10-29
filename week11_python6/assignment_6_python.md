@@ -1,8 +1,8 @@
 # Python assignment 6, Data Science for Biology
 ## Topics to cover
 - Working with files: Input/Output
-- dictionaries
-- Regular expressions
+- Dictionaries
+- More regular expressions
 <p>&nbsp;</p>
 
 ## I. Intro to dictionary assignment. The purpose of this problem is for you to learn and practice how to assign keys and values to a dictionary, to use some dictionary functions to demonstrate that your dictionary is working, and to print out some useful information. We are first going to use the file SG_ref.fasta that is available on the course website. Read in the SG_ref.fasta file from `sys.argv[]` and try the following:
