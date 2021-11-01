@@ -1,4 +1,4 @@
-# Python primer VI, Data Science I, Fall 2020. 
+# Python primer VI, Data Science I, Fall 2021. 
 
 ## Topics to cover
 
@@ -10,6 +10,7 @@
 - Haddock and Dunn chapters and 9, bit of 11 
 - regular expression cheat sheet (python-regular-expressions-cheat-sheet-1.pdf)
 - slides from class
+- [python for biologists dictionaries tutorial](https://pythonforbiologists.com/tutorial/dictionaries.html)
 
 <p>&nbsp;</p>
 
@@ -30,6 +31,10 @@ While python has strict indent rules, statements can be split across lines when 
         'Jen Miles':'9875842194' 
     }
 
+The entire dictionary contents can be printed (although this is seldom useful)
+
+    print(Pbook)
+    
 Values are extracted from a dictionary by specifying the **dictionary name** and a key. The below would return '9875842194'
 
     print(Pbook['Jen Miles'])
@@ -82,6 +87,7 @@ Key:value pairs can be removed from a dictionary using `.pop()`.
     for i in ilist:
         print(i)    ## prints items (key:value) pairs
 
+    Ctemp.get('Tucson') ## returns 95, the value for the Tucson key
 
 ## Building dictionaries on the fly with real data
 
@@ -111,3 +117,66 @@ Much like we iterate over lists, we can iterate through dictionaries to access, 
         print(ID_Seq[thing])
 
 Each iteration through the loop above, "thing" is assigned a key. Hence, the code will print to screen each key followed by its value on the following line.
+
+Here are some examples, based on the little Ctemp dictionary created above, of iterating through dictionaries.
+
+    Ctemp = { 
+       'Tucson': 95, 
+        'Truckee': 65, 
+        'Reno': 74,
+        'Laramie': 50,
+        'Flagstaff': 75,
+        'Bozeman': 70,
+        'Ketchum': 65 
+    }   
+
+    for city in Ctemp.keys():
+        print(city)
+        print(Ctemp[city])
+
+Above we iterate through the dictionary, and are assigning the keys to the the `city` variable for each time through the loop. The first print statement prints each dictionary key (assigned to `city` in this case), the second statement prints the value assigned to each key. If you look at your output below, you will see that dictionaries are unordered.
+
+
+    for city in Ctemp.keys():
+        print(city)
+        print(Ctemp[city])    
+
+To iterate through a dictionary in an ordered manner, we can use the sorted function to iterate by sorted key value. The difference between below and above is the elements are accessed by alphanumeric key value.
+
+
+    for city in sorted(Ctemp.keys()):
+        print(city)
+        print(Ctemp[city])
+
+
+It is often useful to iterate over both key and values (items) in a dictionary to access both simultaneously via different variable names. This is fairly straightforward as well. Using the same Ctemp dictionary as above, but assigning variable names to keys, values and using the `.items()` dictionary function:
+
+    for city, temp in Ctemp.items():
+        print(city) # do something with keys
+        print(temp) # do something with values
+
+Notic in the above example, variables are assigned between `for` and `in` with the first variable name corresponding with keys, and the second corresponding with values. As usual, the names of those variables are arbitrary.
+
+
+To finish, here is an example chunk of code to open a file handle, build a dictionary, and then loop through that dictionary.
+
+
+    IN = open(sys.argv[1], 'r')
+
+    ID_Seq={}           # initializing the ID_seq dictionary
+
+    for Line in IN:
+	    ID = Line.strip('\n') # first line corresponds to an ID
+	    Seq = IN.readline() #reading second line .fa, a DNA seq
+	    Seq = Seq.strip('\n')
+    	ID_Seq[ID]=Seq      # building the ID_seq dictionary
+
+    #WORK ON DICTIONARY OUTSIDE OF LIST
+
+    for id, seq in ID_Seq.items():
+        if re.search("exon", id):
+            OUT1.write(id, 'w')
+            Acount += seq.count('A')
+        else:
+            print("No exon in %s \n" % (id))
+       
